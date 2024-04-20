@@ -1,0 +1,335 @@
+CONSOLE OUTPUT/TESTING RESULTS:
+
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+error: not a valid nucleotide
+DNA sequence analysis:
+29782 nucleotides in the sequence
+
+Sequence breakdown:
+Adenine:     8892    29.86%
+Thymine:     9581    32.17%
+Cytosine:    5462    18.34%
+Guanine:     5847    19.63%
+
+
+
+
+
+C++ SOURCE CODE: 
+//Description of Program: DNA Sequence Analysis
+//Author: James Vaughan
+//Section 1436.900
+//Date: 10/09/2022
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+
+using namespace std;
+
+int main(){
+   //declare variables
+    double totalNucleotide = 0;
+    int adenine = 0;
+    int thymine = 0;
+    int cytosine = 0;
+    int guanine = 0;
+    
+    // const variables
+    const int PRECISION = 2;
+    const int COLUMN_POSITION = 20;
+   //open dnaSequence.txt
+   ifstream fin;
+   fin.open("dnaSequence.txt");
+   //loop through the file, adding to the total nucleotide number, adding to the total for which Letter it is (choice?)
+   if (fin) {
+        char value;
+        while (fin.get(value)) {
+            switch (value){
+                case 'A' : 
+                    totalNucleotide += 1;
+                    adenine += 1;
+                    break;
+                case 'T' :
+                    totalNucleotide += 1;
+                    thymine += 1;
+                    break;
+                case 'C' :
+                    totalNucleotide += 1;
+                    cytosine += 1;
+                    break;
+                case 'G' :
+                    totalNucleotide += 1;
+                    guanine += 1;
+                    break;
+                default :
+                    cout << "error: not a valid nucleotide" << endl;
+            }
+        }
+       //close dnaSequence.txt
+       fin.close();
+   
+   } else {
+       cout << "error opening the file for input" << endl;
+   }
+
+   // calculate percentages for each Letter
+   const double ADENINE_PERCENTAGE = (adenine / totalNucleotide) * 100;
+   const double THYMINE_PERCENTAGE = (thymine / totalNucleotide) * 100;
+   const double CYTOSINE_PERCENTAGE = (cytosine / totalNucleotide) * 100;
+   const double GUANINE_PERCENTAGE = (guanine / totalNucleotide) * 100;
+   
+   //display output
+   cout << "DNA sequence analysis:" << endl;
+   cout << totalNucleotide << " nucleotides in the sequence"<< endl << endl;
+   cout << "Sequence breakdown:"<< endl;
+   // Configure the output
+   cout << setprecision(PRECISION) << fixed;
+   cout << "Adenine:" << setw(COLUMN_POSITION - 11) << adenine << setw(COLUMN_POSITION - 11) << ADENINE_PERCENTAGE << "%" << endl;
+   cout << "Thymine:" << setw(COLUMN_POSITION - 11) << thymine << setw(COLUMN_POSITION - 11) << THYMINE_PERCENTAGE << "%" << endl;
+   cout << "Cytosine:" << setw(COLUMN_POSITION - 12) << cytosine << setw(COLUMN_POSITION - 11) << CYTOSINE_PERCENTAGE << "%" << endl;
+   cout << "Guanine:" << setw(COLUMN_POSITION - 11) << guanine << setw(COLUMN_POSITION - 11) << GUANINE_PERCENTAGE << "%" << endl;
+   
+   //open new outputfile
+   ofstream fout;
+   fout.open("Assignment 5C Outputfile.txt");
+   
+   //check to make sure it worked
+   if(fout){
+       //write output message
+       fout << "DNA sequence analysis:" << endl;
+       fout << totalNucleotide << " nucleotides in the sequence"<< endl << endl;
+       fout << "Sequence breakdown:"<< endl;
+       // Configure the output
+       fout << setprecision(PRECISION) << fixed;
+       fout << "Adenine:" << setw(COLUMN_POSITION - 11) << adenine << setw(COLUMN_POSITION - 11) << ADENINE_PERCENTAGE << "%" << endl;
+       fout << "Thymine:" << setw(COLUMN_POSITION - 11) << thymine << setw(COLUMN_POSITION - 11) << THYMINE_PERCENTAGE << "%" << endl;
+       fout << "Cytosine:" << setw(COLUMN_POSITION - 12) << cytosine << setw(COLUMN_POSITION - 11) << CYTOSINE_PERCENTAGE << "%" << endl;
+       fout << "Guanine:" << setw(COLUMN_POSITION - 11) << guanine << setw(COLUMN_POSITION - 11) << GUANINE_PERCENTAGE << "%" << endl;
+   } else {
+       cout << "error opening the file for output" << endl;
+   }
+   
+   //close file
+   fout.close();
+   return 0;
+}

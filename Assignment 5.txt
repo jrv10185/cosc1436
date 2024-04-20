@@ -1,0 +1,82 @@
+CONSOLE OUTPUT/TESTING RESULTS: 
+
+Enter a number of values from 2 to 10: 
+1
+Invalid input!
+Enter a number of values from 2 to 10: 
+11
+Invalid input!
+Enter a number of values from 2 to 10: 
+6
+Enter value 1:
+5
+Enter value 2:
+8
+Enter value 3:
+45
+Enter value 4:
+11
+Enter value 5:
+6
+Enter value 6:
+1
+The average is 12.667
+------------------------------------------------------------------------
+Enter a number of values from 2 to 10:
+4
+Enter value 1:
+41
+Enter value 2:
+55
+Enter value 3:
+12
+Enter value 4:
+9
+The average is 29.250
+
+
+
+ 
+
+C++ SOURCE CODE: 
+
+//Description of Program: Compute Average of values input from user
+//Author: James Vaughan
+//Section 1436.900
+//Date: 09/22/2022
+
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+
+using namespace std;
+
+int main() {
+    double sum;
+      //intialize 3 named constants
+    const double MIN_INPUT = 2;
+    const double MAX_INPUT = 10;
+    const double DECIMAL_PLACE = 3;
+    // set a do/while loop asking for how many values to be averaged 2-10; exit loop if its between 2-10
+    double inputValue = 0;
+    do {
+        cout << "Enter a number of values from "<<MIN_INPUT<< " to "<<MAX_INPUT<<": "<<endl;
+        cin >> inputValue;
+        if(inputValue < MIN_INPUT || inputValue > MAX_INPUT){
+            cout << "Invalid input!" <<endl;
+        }
+    }
+    while (inputValue < MIN_INPUT || inputValue > MAX_INPUT);
+    
+    //loop through and get values for the output
+    for (int a=1; a<=inputValue; a++){
+    //get value to be averaged
+    cout<< "Enter value "<<a<<":"<<endl;
+    double valueToBeAveraged;
+    cin >> valueToBeAveraged;
+    // add to sum
+    sum += valueToBeAveraged;
+    }
+    // output formatted answer
+    cout << "The average is " << setprecision(DECIMAL_PLACE) << fixed << (sum/inputValue) << endl;
+}

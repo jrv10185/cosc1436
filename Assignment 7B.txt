@@ -1,0 +1,213 @@
+CONSOLE OUTPUT/TESTING RESULTS:
+
+
+FIRST RUN
+Please enter the scorecard name: 
+scorecard.txt
+error opening scorecard.txt for input
+
+SECOND RUN
+Please enter the scorecard name: 
+scorecard1.txt
+
+Mirabella Jones's results:
+7.5, 8.8, 7, 8.1, 8, 9.8, 9.3, 8.9, 9.1, 9, 
+The highest score of 9.8 and the lowest score of 7 were dropped
+The average score is 8.59
+
+Ruth Mendez's results:
+9.80, 8.50, 6.00, 8.80, 8.60, 7.10, 7.80, 8.00, 7.20, 8.30, 
+The highest score of 9.80 and the lowest score of 6.00 were dropped
+The average score is 8.04
+
+Melvin Ingram's results:
+9.90, 7.30, 6.30, 7.00, 6.80, 6.20, 8.90, 9.50, 6.50, 6.00, 
+The highest score of 9.90 and the lowest score of 6.00 were dropped
+The average score is 7.31
+
+Tara Silva's results:
+8.10, 7.10, 9.40, 7.20, 9.20, 6.40, 9.50, 8.40, 6.70, 6.60, 
+The highest score of 9.50 and the lowest score of 6.40 were dropped
+The average score is 7.84
+
+Joann Gardner's results:
+6.90, 8.00, 8.70, 8.90, 9.10, 7.50, 8.20, 6.30, 8.40, 6.20, 
+The highest score of 9.10 and the lowest score of 6.20 were dropped
+The average score is 7.86
+
+Jeff Barnes's results:
+6.40, 7.20, 8.30, 8.60, 7.90, 6.00, 7.10, 6.70, 9.50, 9.90, 
+The highest score of 9.90 and the lowest score of 6.00 were dropped
+The average score is 7.71
+
+Lucille Dixon's results:
+9.50, 6.50, 9.30, 9.40, 8.50, 8.70, 6.20, 9.70, 8.70, 8.20, 
+The highest score of 9.70 and the lowest score of 6.20 were dropped
+The average score is 8.60
+
+Krista James's results:
+8.40, 9.40, 8.10, 6.30, 6.10, 8.60, 9.60, 9.10, 9.90, 8.80, 
+The highest score of 9.90 and the lowest score of 6.10 were dropped
+The average score is 8.54
+
+Naomi Sanders's results:
+7.00, 7.20, 8.70, 9.10, 9.60, 6.60, 9.40, 9.80, 8.40, 7.60, 
+The highest score of 9.80 and the lowest score of 6.60 were dropped
+The average score is 8.38
+
+Ricky McCarthy's results:
+9.80, 7.20, 9.00, 8.50, 6.20, 6.50, 9.10, 8.40, 8.10, 8.70, 
+The highest score of 9.80 and the lowest score of 6.20 were dropped
+The average score is 8.19
+
+THIRD RUN
+Please enter the scorecard name: 
+scorecard2.txt
+
+Mirabella Jones's results:
+7.5, 8.8, 7, 8.1, 8, 9.8, 9.3, 8.9, 9.1, 9, 
+The highest score of 9.8 and the lowest score of 7 were dropped
+The average score is 8.59
+
+Ruth Mendez's results:
+9.80, 8.50, 6.00, 8.80, 8.60, 7.10, 7.80, 8.00, 7.20, 8.30, 
+The highest score of 9.80 and the lowest score of 6.00 were dropped
+The average score is 8.04
+
+Melvin Ingram is disqualified
+
+Tara Silva's results:
+8.10, 7.10, 9.40, 7.20, 9.20, 6.40, 9.50, 8.40, 6.70, 6.60, 
+The highest score of 9.50 and the lowest score of 6.40 were dropped
+The average score is 7.84
+
+Joann Gardner is disqualified
+
+Jeff Barnes's results:
+6.40, 7.20, 8.30, 8.60, 7.90, 6.00, 7.10, 6.70, 9.50, 9.90, 
+The highest score of 9.90 and the lowest score of 6.00 were dropped
+The average score is 7.71
+
+
+
+
+C++ SOURCE CODE: 
+
+//Description of Program: Scorecards
+//Author: James Vaughan
+//Section 1436.900
+//Date: 11/18/2022
+
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+
+using namespace std;
+
+//global Constants
+const int NUM_SCORES = 10;
+const int MAX_COMPETITORS = 10;
+const int MAX_SCORE = 10;
+const int MIN_SCORE = 0;
+const int PRECISION = 2;
+
+//This function reads a file with names and scores, and portions them into a name array and score array, and errorArray
+int readScores(string filename, string competitors[], double scores[][NUM_SCORES], string errorArray[]){
+    //open file with the scores
+    ifstream fin;
+    fin.open(filename);
+    
+    int competittorCount = 0;
+    
+    if(!fin){
+        cout << "error opening " << filename <<" for input" << endl;
+    } else {
+        //read scores
+        int j = 0;
+        //define loop counter outside loop to get number of contractors
+        for (; j < MAX_COMPETITORS && fin; j++){
+            if(!getline(fin, competitors[j])){
+                break;
+            }
+            errorArray[j] = "";
+            //loop to get (and test for errors) scores
+            for(int i = 0; i < NUM_SCORES; i++){
+                fin >> scores[j][i];
+                if (scores[j][i] < MIN_SCORE || scores[j][i] > MAX_SCORE){
+                    errorArray[j] = "Invalid Scores";
+                }
+                
+            }
+            //ignore endline after the scores
+            fin.ignore();
+        }
+        //close file
+        fin.close();
+        competittorCount = j;
+    }
+    return competittorCount;
+}
+
+double findMaxIdx(double arr[][NUM_SCORES], int size, int rowIteration){
+    int maxIdx = 0;
+    for (int i = 1; i < size; i++){
+        if (arr[rowIteration][i] > arr[rowIteration][maxIdx]){
+            maxIdx = i;
+        }
+    }
+    return arr[rowIteration][maxIdx];
+}
+
+double findMinIdx(double arr[][NUM_SCORES], int size, int rowIteration){
+    int minIdx = 0;
+    for (int i = 1; i < size; i++){
+        if (arr[rowIteration][i] < arr[rowIteration][minIdx]){
+            minIdx = i;
+        }
+    }
+    return arr[rowIteration][minIdx];
+}
+
+void computeScores (double scores[][NUM_SCORES], int rowIteration){
+    //this function calls two other function to find min and max scores, calculates average (without min/max) and displays
+    double min = findMinIdx(scores, NUM_SCORES, rowIteration);
+    double max = findMaxIdx(scores, NUM_SCORES, rowIteration);
+    double total = 0; 
+    for (int i=0;i<NUM_SCORES;i++){
+        total += scores[rowIteration][i];
+        cout << scores[rowIteration][i] << ", ";
+    }
+    double average = (total - (min+max)) / (NUM_SCORES-2);
+    cout <<endl << "The highest score of "<< max << " and the lowest score of "<<min<<" were dropped"<<endl;
+    cout << setprecision(PRECISION)<<fixed;
+    cout << "The average score is "<<average<<endl;
+    
+}
+
+int main()
+{
+    string competitors[MAX_COMPETITORS];
+    string errorArray[MAX_COMPETITORS]; 
+    double scores[MAX_COMPETITORS][NUM_SCORES];
+    
+    //get filename from user
+    cout << "Please enter the scorecard name: "<<endl;
+    string filename;
+    cin >> filename; 
+
+    //call readScores
+    int numCompetitors = readScores(filename, competitors, scores, errorArray);
+    
+    //loop through the competitors and if no error, call function to calculate average
+    for (int i = 0; i < numCompetitors; i++){
+        if (errorArray[i] == ""){
+            //call the computeFunction
+            cout<<endl<< competitors[i]<<"'s results:"<<endl;
+            computeScores(scores, i);
+        } else {
+            //handle errors
+            cout << endl << competitors[i] <<" is disqualified"<<endl;
+        }
+    }
+    return 0;
+}

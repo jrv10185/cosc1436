@@ -1,0 +1,287 @@
+CONSOLE OUTPUT/TESTING RESULTS:
+RUN 1
+Nucleotides in the sequence:
+1. Adenine
+2. Thymine
+3. Cytosine
+4. Guanine
+Enter your choice: 0
+ERROR: Valid choices are from 1 to 4
+Enter your choice: 
+5
+ERROR: Valid choices are from 1 to 4
+Enter your choice: 
+4
+There are 5847 occurrences of Guanine
+Enter Occurence: 1
+occurence 1 of Guanine is at position 1 of the sequence
+
+RUN 2
+Nucleotides in the sequence:
+1. Adenine
+2. Thymine
+3. Cytosine
+4. Guanine
+Enter your choice: 1
+There are 8892 occurrences of Adenine
+Enter Occurence: 9000
+ERROR: Valid choices are from 1 to 8892
+Enter your choice: 
+0
+ERROR: Valid choices are from 1 to 8892
+Enter your choice: 
+2225
+occurence 2225 of Adenine is at position 7165 of the sequence
+
+
+RUN 3
+error opening file 
+DNA sequence analysis:
+29782.00 nucleotides in the sequence
+
+Sequence breakdown:
+Adenine:  8892      29.86%
+Thymine:  9581      32.17%
+Cytosine: 5462      18.34%
+Guanine:  5847      19.63%
+Nucleotides in the sequence:
+1. Adenine
+2. Thymine
+3. Cytosine
+4. Guanine
+Enter your choice: 2
+There are 9581 occurrences of Thymine
+Enter Occurence: 5
+occurence 5 of Thymine is at position 10 of the sequence
+
+
+
+
+
+C++ SOURCE CODE: 
+//Description of Program: DNA Sequence Analysis
+//Author: James Vaughan
+//Section 1436.900
+//Date: 11/27/2022
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+
+using namespace std;
+
+//function to increment an array
+double* incrementArray(int* arr, int& size){
+    //constant Variables
+    const int SIZE_INCREMEMT = 100;
+    
+    int newSize = size + SIZE_INCREMEMT;
+    double* newArr = new double[newSize];
+    for (int i = 0; i < size; ++i) {
+        newArr[i] = arr[i];
+    }
+    if (arr != NULL){
+        // delete[] arr;  this isnt deleting right
+    }
+    size = newSize;
+    return newArr;
+}
+
+char* incrementArray(char* arr, int& size){
+    //constant Variables
+    const int SIZE_INCREMEMT = 100;
+    
+    int newSize = size + SIZE_INCREMEMT;
+    char* newArr = new char[newSize];
+    for (int i = 0; i < size; ++i) {
+        newArr[i] = arr[i];
+    }
+    delete[] arr;
+    size = newSize;
+    return newArr;
+}
+
+//function to open file, store in a dynamically created and updated array,return pointer to array of nucleotides 
+void countNucleotides(int& adenine, int& thymine, int& cytosine, int& guanine, double& totalNucleotide, char*& nucleotideArray, int& size){
+    ifstream fin;
+    fin.open("dnaSequence.txt");
+    if(fin){
+        int letterRead =0;
+        for (char letter; fin >> letter; ++letterRead){
+          if (letterRead == size){
+              nucleotideArray = incrementArray(nucleotideArray, size);
+          }  
+        switch (letter){
+                case 'A' : 
+                    totalNucleotide += 1;
+                    adenine += 1;
+                    nucleotideArray[letterRead] = 'A';
+                    break;
+                case 'T' :
+                    totalNucleotide += 1;
+                    thymine += 1;
+                    nucleotideArray[letterRead] = 'T';
+                    break;
+                case 'C' :
+                    totalNucleotide += 1;
+                    cytosine += 1;
+                    nucleotideArray[letterRead] = 'C';
+                    break;
+                case 'G' :
+                    totalNucleotide += 1;
+                    guanine += 1;
+                    nucleotideArray[letterRead] = 'G';
+                    break;
+                case '\n':
+                    break;
+                default :
+                    cout << "error: not a valid nucleotide" << endl;
+            }
+        }
+    fin.close();
+    } else {
+        cout << "Error opening file" << endl;
+    }
+}
+
+//function to format output 
+void formatOutput(ostream& os, string message, double totalNucleotide, int nucleotideAmount, double percentage){
+    const int PRECISION = 2;
+    const int COLUMN_POSITION = 10;
+    os << setprecision(PRECISION) << fixed << left;
+    
+    //depending on which variable sent to this function, format would be different
+    if( nucleotideAmount == 0){
+        if(totalNucleotide == 0){
+            os << message << endl;
+        } else {
+            os << totalNucleotide << message << endl;
+        }
+    } else {
+        os << setw(COLUMN_POSITION) << message << setw(COLUMN_POSITION) << nucleotideAmount << percentage << "%" << endl;
+    }
+}
+
+//function to write output
+void output(ostream& os, double& totalNucleotide, int nucleotide1, double percentage1, int nucleotide2, double percentage2, int nucleotide3, double percentage3, int nucleotide4, double percentage4){
+    formatOutput(os, "DNA sequence analysis:", 0, 0, 0);
+    formatOutput(os," nucleotides in the sequence", totalNucleotide, 0, 0); 
+    os << endl;
+    formatOutput(os, "Sequence breakdown:", 0, 0, 0);
+    formatOutput(os, "Adenine:", 0, nucleotide1, percentage1);
+    formatOutput(os, "Thymine:", 0, nucleotide2, percentage2);
+    formatOutput(os, "Cytosine:", 0, nucleotide3, percentage3);
+    formatOutput(os, "Guanine:", 0, nucleotide4, percentage4);
+}
+
+int choiceValidator(int choice, int min, int max){
+    while (choice < min || choice > max){
+        if(choice < min || choice > max){
+            cout << "ERROR: Valid choices are from "<<min<<" to "<<max <<endl;
+            cout << "Enter your choice: "<<endl;
+            cin >> choice;
+        }
+    }
+    return choice;
+}
+
+int main(){
+    const int CHOICE_MIN = 1;
+    const int CHOICE_MAX = 4;
+    
+   //declare variables
+    double totalNucleotide = 0;
+    int adenine = 0;
+    int thymine = 0;
+    int cytosine = 0;
+    int guanine = 0;
+    int size = 0;
+    char* nucleotideArray= new char[size];
+    
+    //open file and count nucleotides
+    countNucleotides(adenine, thymine, cytosine, guanine, totalNucleotide, nucleotideArray, size);
+    
+     // calculate percentages for each Letter
+   const double ADENINE_PERCENTAGE = (adenine / totalNucleotide) * 100;
+   const double THYMINE_PERCENTAGE = (thymine / totalNucleotide) * 100;
+   const double CYTOSINE_PERCENTAGE = (cytosine / totalNucleotide) * 100;
+   const double GUANINE_PERCENTAGE = (guanine / totalNucleotide) * 100;
+    
+    //open new outputfile
+   ofstream fout;
+   fout.open("report.txt");
+   
+   //if successfully opened, run function to output to file.
+   if(fout){
+       output(fout, totalNucleotide,adenine,ADENINE_PERCENTAGE,thymine,THYMINE_PERCENTAGE,cytosine,CYTOSINE_PERCENTAGE,guanine,GUANINE_PERCENTAGE);
+       //close file
+       fout.close();
+   } else {
+       cout << "error opening file "<< endl;
+       output(cout, totalNucleotide,adenine,ADENINE_PERCENTAGE,thymine,THYMINE_PERCENTAGE,cytosine,CYTOSINE_PERCENTAGE,guanine,GUANINE_PERCENTAGE);
+   }
+   
+   //present options to user and get choice
+   cout << "Nucleotides in the sequence:"<<endl;
+   cout << "1. Adenine"<<endl;
+   cout << "2. Thymine"<<endl;
+   cout << "3. Cytosine"<<endl;
+   cout << "4. Guanine"<<endl;
+   cout << "Enter your choice: ";
+   int choice;
+   cin >> choice;
+   
+   //validate choice
+   choice = choiceValidator(choice, CHOICE_MIN, CHOICE_MAX);
+    
+    string chosenNucleotide = "";
+    int chosenNucleotideAmount = 0;
+    char chosenLetter;
+    
+    //once we have validated choice, get variable for output
+    switch (choice){
+        case 1 :
+            chosenNucleotide = "Adenine";
+            chosenNucleotideAmount = adenine;
+            chosenLetter ='A';
+            break;
+        case 2 : 
+            chosenNucleotide = "Thymine";
+            chosenNucleotideAmount = thymine;
+            chosenLetter ='T';
+            break;
+        case 3 :
+            chosenNucleotide = "Cytosine";
+            chosenNucleotideAmount = cytosine;
+            chosenLetter ='C';
+            break;
+        case 4 : 
+            chosenNucleotide = "Guanine";
+            chosenNucleotideAmount = guanine;
+            chosenLetter ='G';
+            break;
+    }
+    
+    //output number of occurances, and get occurence from user
+    cout << "There are " << chosenNucleotideAmount <<" occurrences of " << chosenNucleotide << endl;
+    cout << "Enter Occurence: ";
+    int occurence;
+    cin >> occurence;
+    occurence = choiceValidator(occurence, 1, chosenNucleotideAmount);
+    
+    //find position of occurence
+    int counter = 0;
+    int position =0;
+    for(int i; i<=chosenNucleotideAmount; i++){
+        if(nucleotideArray[i] == chosenLetter){
+            counter+=1;
+        }
+        if(counter == occurence){
+            position = i;
+            break;
+        }
+    }
+    //printout position of occurence
+    cout << "occurence " << occurence << " of "<<chosenNucleotide<<" is at position "<< position << " of the sequence"<<endl;
+    return 0;
+}
+

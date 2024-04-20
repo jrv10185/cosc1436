@@ -1,0 +1,251 @@
+CONSOLE OUTPUT/TESTING RESULTS:
+What would you like to buy?
+1. Bread
+2. Milk
+3. Soap
+4. Eggs
+5. Deodorant
+6. Juice
+7. Chips
+8. Forks
+9. Spoons
+10. Cups
+Please enter your choice: 0
+The valid choices are 1 to 10
+Please enter your choice: 11
+The valid choices are 1 to 10
+Please enter your choice: 1
+Please enter the price: 1.5
+Please enter your age: 50
+        Invoice
+Bread:         $1.50
+Tax:           $0.00
+Total:         $1.50
+-----------------------------------------------------------------
+
+What would you like to buy?
+1. Bread
+2. Milk
+3. Soap
+4. Eggs
+5. Deodorant
+6. Juice
+7. Chips
+8. Forks
+9. Spoons
+10. Cups
+Please enter your choice: 0
+The valid choices are 1 to 10
+Please enter your choice: 11
+The valid choices are 1 to 10
+Please enter your choice: 3
+Please enter the price: 2.5
+Please enter your age: 61
+        Invoice
+Soap:          $2.50
+Tax:           $0.20
+Discount:      $-0.12
+Total:         $2.58
+------------------------------------------------------------------------
+What would you like to buy?
+1. Bread
+2. Milk
+3. Soap
+4. Eggs
+5. Deodorant
+6. Juice
+7. Chips
+8. Forks
+9. Spoons
+10. Cups
+Please enter your choice: 1
+Please enter the price: 2.5
+Please enter your age: 61
+        Invoice
+Bread:         $2.50
+Tax:           $0.00
+Discount:      $-0.12
+Total:         $2.38
+----------------------------------------------------------------------------
+What would you like to buy?
+1. Bread
+2. Milk
+3. Soap
+4. Eggs
+5. Deodorant
+6. Juice
+7. Chips
+8. Forks
+9. Spoons
+10. Cups
+Please enter your choice: 3
+Please enter the price: 2.5
+Please enter your age: 50
+        Invoice
+Soap:          $2.50
+Tax:           $0.20
+Total:         $2.70
+
+
+C++ SOURCE CODE: 
+
+//Description of Program: Invoice Revisited
+//Author: James Vaughan
+//Section 1436.900
+//Date: 10/16/2022
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+
+using namespace std;
+//Global constants
+const int CHOICE_MIN = 1;
+const int CHOICE_MAX = 10;
+const int WIDTH = 15;
+
+//function declarations
+void displayMenu();
+string choiceToItem(int);
+void outputChoice(int);
+int getValidatedChoice();
+int inputIntValue(string);
+double getPrice();
+int getAge();
+bool isSenior(int);
+bool taxablity(int);
+void outputFunction(string, double);
+
+int main() {
+    // Constant for formatting
+    const int PRECISION = 2;
+
+    
+    // Constant for senior discount
+    const double SENIOR_DISCOUNT = -.05;
+    
+    // Display the menu 
+    displayMenu();
+	
+	
+	// Get a validated choice from the user
+    int choice = getValidatedChoice();
+
+    //get price and age
+    double price = getPrice();
+    int age = getAge();
+	
+	//function to assign item name
+    string item = choiceToItem(choice);
+    
+    //function to determine if item is taxable
+    bool isTaxable = taxablity(choice);
+    
+    //calculate tax
+    double tax = 0.00;
+    if(isTaxable){
+        tax = price * .08;
+    }
+    // function to determine if discount applies isTrue
+    bool isTrue = isSenior(age);
+    double discount = 0.00;
+    if(!isTrue){
+        //stuff for under 60
+    }else {
+        //stuff for over 60
+        discount = price * -.05;
+    }
+    double total = (price+tax)+discount;
+    //call function to format and print each line of output
+    cout << "\tInvoice" <<endl;
+    
+    //format the output
+	cout << setprecision(PRECISION) << fixed;
+    outputFunction(item, price);
+    outputFunction("Tax", tax);
+    if(isTrue){
+        outputFunction("Discount", discount);
+    }
+    outputFunction("Total", total);
+    
+    return 0;
+}
+void displayMenu(){
+    cout << "What would you like to buy?"<<endl;
+    for (int i = CHOICE_MIN; i <=CHOICE_MAX; i++){
+        outputChoice(i);
+    }
+}
+
+void outputChoice(int choice){
+    cout << choice << ". " << choiceToItem(choice) << endl;
+}
+
+string choiceToItem(int choice){
+    return choice == 1 ? "Bread" :
+           choice == 2 ? "Milk" :
+           choice == 3 ? "Soap" :
+           choice == 4 ? "Eggs" :
+           choice == 5 ? "Deodorant" :
+           choice == 6 ? "Juice" :
+           choice == 7 ? "Chips" :
+           choice == 8 ? "Forks" :
+           choice == 9 ? "Spoons" :
+           choice == 10 ? "Cups" :
+           "Sorry invalid choice";
+}
+
+int getValidatedChoice(){
+    //get choice from user
+    int choice = inputIntValue("your choice");
+    
+    //Validate the user's menu selection
+    while (choice < CHOICE_MIN || choice > CHOICE_MAX) {
+        cout << "The valid choices are "<<CHOICE_MIN
+             <<" to " << CHOICE_MAX << endl;
+             choice = inputIntValue("your choice");
+    }
+    return choice;
+}
+
+int inputIntValue(string toInput) {
+    cout << "Please enter " << toInput << ": ";
+	int ret;
+	cin >> ret;
+	return ret;
+}
+
+double getPrice(){
+    cout << "Please enter the price: ";
+    double price;
+    cin >> price;
+    return price;
+}
+
+int getAge(){
+    cout << "Please enter your age: ";
+    int age;
+    cin >> age;
+    return age;
+}
+
+bool isSenior(int age){
+    if(age>=60){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+bool taxablity(int choice){
+    if(choice==3 || choice==5 || choice==8||choice==9||choice==10){
+        return true;
+    }else{
+        return false;
+    }
+}
+
+void outputFunction(string text, double amount){
+    cout << text << ":" << setw(WIDTH - text.length()) << "$" << amount <<endl;
+}
+

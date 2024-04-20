@@ -1,0 +1,141 @@
+CONSOLE OUTPUT/TESTING RESULTS:
+
+DNA sequence analysis:
+29782 nucleotides in the sequence
+
+Sequence breakdown:
+Adenine:  8892      29.86%
+Thymine:  9581      32.17%
+Cytosine: 5462      18.34%
+Guanine:  5847      19.63%
+
+
+
+
+
+C++ SOURCE CODE: 
+
+//Description of Program: DNA Sequence Analysis
+//Author: James Vaughan
+//Section 1436.900
+//Date: 11/01/2022
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+
+using namespace std;
+
+//function prototypes
+bool countNucleotides(int& , int& , int&, int&, double&);
+void formatOutput(ostream&, string, int, int, double);
+void output(ostream&, int, int, double, int, double, int, double, int, double);
+
+int main(){
+   //declare variables
+    double totalNucleotide = 0;
+    int adenine = 0;
+    int thymine = 0;
+    int cytosine = 0;
+    int guanine = 0;
+
+    //call function to check for file, function also reads file. If error opening file, quit program
+   if (!countNucleotides(adenine, thymine, cytosine, guanine, totalNucleotide)){
+       cout << "error opening the file for input" << endl;
+       exit(0);
+   }
+   
+   // calculate percentages for each Letter
+   const double ADENINE_PERCENTAGE = (adenine / totalNucleotide) * 100;
+   const double THYMINE_PERCENTAGE = (thymine / totalNucleotide) * 100;
+   const double CYTOSINE_PERCENTAGE = (cytosine / totalNucleotide) * 100;
+   const double GUANINE_PERCENTAGE = (guanine / totalNucleotide) * 100;
+   
+   //call function to display output on  the console
+   output(cout, totalNucleotide,adenine,ADENINE_PERCENTAGE,thymine,THYMINE_PERCENTAGE,cytosine,CYTOSINE_PERCENTAGE,guanine,GUANINE_PERCENTAGE);
+
+   //open new outputfile
+   ofstream fout;
+   fout.open("Assignment 6B Outputfile.txt");
+   
+   //if successfully opened, run function to output to file.
+   if(fout){
+       output(fout, totalNucleotide,adenine,ADENINE_PERCENTAGE,thymine,THYMINE_PERCENTAGE,cytosine,CYTOSINE_PERCENTAGE,guanine,GUANINE_PERCENTAGE);
+       //close file
+       fout.close();
+   } else {
+       cout << "error opening the file for output" << endl;
+   }
+
+   return 0;
+}
+
+//function to open file and count nucleotides
+bool countNucleotides(int& adenine, int& thymine, int&cytosine, int& guanine, double& totalNucleotide){
+       //open dnaSequence.txt
+   ifstream fin;
+   fin.open("dnaSequence.txt");
+   //loop through the file, adding to the total nucleotide number, adding to the total for which Letter it is
+   if (fin) {
+        char value;
+        while (fin.get(value)) {
+            switch (value){
+                case 'A' : 
+                    totalNucleotide += 1;
+                    adenine += 1;
+                    break;
+                case 'T' :
+                    totalNucleotide += 1;
+                    thymine += 1;
+                    break;
+                case 'C' :
+                    totalNucleotide += 1;
+                    cytosine += 1;
+                    break;
+                case 'G' :
+                
+                    totalNucleotide += 1;
+                    guanine += 1;
+                    break;
+                case '\n':
+                    break;
+                default :
+                    cout << "error: not a valid nucleotide" << endl;
+            }
+        }
+       //close dnaSequence.txt
+       fin.close();
+       return true;
+    } else {
+        return false;
+    }
+}
+
+//function to format output 
+void formatOutput(ostream& os, string message, int totalNucleotide, int nucleotideAmount, double percentage){
+    const int PRECISION = 2;
+    const int COLUMN_POSITION = 10;
+    os << setprecision(PRECISION) << fixed << left;
+    
+    //depending on which variable sent to this function, format would be different
+    if( nucleotideAmount == 0){
+        if(totalNucleotide == 0){
+            os << message << endl;
+        } else {
+            os << totalNucleotide << message << endl;
+        }
+    } else {
+        os << setw(COLUMN_POSITION) << message << setw(COLUMN_POSITION) << nucleotideAmount << percentage << "%" << endl;
+    }
+}
+
+//function to write output
+void output(ostream& os, int totalNucleotide, int nucleotide1, double percentage1, int nucleotide2, double percentage2, int nucleotide3, double percentage3, int nucleotide4, double percentage4){
+    formatOutput(os, "DNA sequence analysis:", 0, 0, 0);
+    formatOutput(os," nucleotides in the sequence", totalNucleotide, 0, 0); 
+    os << endl;
+    formatOutput(os, "Sequence breakdown:", 0, 0, 0);
+    formatOutput(os, "Adenine:", 0, nucleotide1, percentage1);
+    formatOutput(os, "Thymine:", 0, nucleotide2, percentage2);
+    formatOutput(os, "Cytosine:", 0, nucleotide3, percentage3);
+    formatOutput(os, "Guanine:", 0, nucleotide4, percentage4);
+}

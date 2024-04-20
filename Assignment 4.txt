@@ -1,0 +1,156 @@
+CONSOLE OUTPUT/TESTING RESULTS: 
+
+
+What would you like to buy?
+1. Bread
+2. Milk
+3. Soap
+
+Please enter your choice: 1
+Please enter the price: 2.85
+Please enter your age: 22
+
+        Invoice
+Bread:          $2.85
+Tax:            $0.00
+Total:          $2.85
+-------------------------------
+
+What would you like to buy?
+1. Bread
+2. Milk
+3. Soap
+
+Please enter your choice: 3
+Please enter the price: 1.65
+Please enter your age: 45
+
+        Invoice
+Soap:           $1.65
+Tax:            $0.13
+Total:          $1.78
+
+-------------------------------------
+
+What would you like to buy?
+1. Bread
+2. Milk
+3. Soap
+
+Please enter your choice: 2
+Please enter the price: 3.25
+Please enter your age: 60
+
+        Invoice
+Milk:           $3.25
+Tax:            $0.00
+Discount:       $-0.16
+Total:          $3.09
+
+-----------------------------------
+
+What would you like to buy?
+1. Bread
+2. Milk
+3. Soap
+
+Please enter your choice: 3
+Please enter the price: 1.65
+Please enter your age: 81
+
+        Invoice
+Soap:           $1.65
+Tax:            $0.13
+Discount:       $-0.08
+Total:          $1.70
+-----------------------------------
+
+What would you like to buy?
+1. Bread
+2. Milk
+3. Soap
+
+Please enter your choice: 5
+
+Sorry, 5 wasn't a valid choice
+-------------------------------
+
+C++ SOURCE CODE: 
+
+//Description of Program: Invoice
+//Author: James Vaughan
+//Section 1436.900
+//Date: 09/11/2022
+
+#include <iostream>
+#include <iomanip>
+#include <string>
+
+using namespace std;
+
+int main() {
+    // Constant for senior discount
+    const double SENIOR_DISCOUNT = .05;
+    
+    // Constant for formatting
+    const int PRECISION = 2;
+    const int WIDTH = 15;
+    
+    // Display the menu and get a choice.
+	cout << endl << "What would you like to buy?" << endl;
+	cout << "1. Bread" << endl;
+	cout << "2. Milk" << endl;
+	cout << "3. Soap" << endl << endl;
+	cout << "Please enter your choice: ";
+	int choice;
+	cin >> choice;
+	
+	//format the output
+	cout << setprecision(PRECISION) << fixed;
+	
+	//Check for valid choice
+	if (choice < 1 || choice > 3) {
+	    cout << endl << "Sorry, " << choice << " wasn't a valid choice" ;
+	}
+	else {
+	    //once valid choice is entered, get price and age
+	    cout << "Please enter the price: ";
+	    double price;
+	    cin >> price;
+	    
+	    cout << "Please enter your age: ";
+	    int age;
+	    cin >> age;
+	    
+	    //assign a string for item name depending on which choice was chosen
+	    string item = choice == 1 ? "Bread" :
+	                  choice == 2 ? "Milk" :
+	                  "Soap";
+	    // calculate the tax and discount
+	    double tax = 0.00;
+	    if (choice == 3){
+	        tax = .08;
+	    }
+	    double taxCost = price * tax;
+	    
+	    double discount = SENIOR_DISCOUNT * price;
+	    
+	    // will need seperate displays depending on age of user              
+	    if(age < 60){
+	        cout << endl << setw(WIDTH) << "Invoice" << endl;
+	        cout << item << ": " << setw(WIDTH - item.length()) << "$" << price << endl;
+	        cout << "Tax: " << setw(WIDTH - 3) << "$"<< taxCost << endl;
+	        cout << "Total: " << setw(WIDTH - 5) << "$" << price + taxCost << endl;
+	    }
+	    else {
+	        cout << endl << setw(WIDTH) << "Invoice" << endl;
+	        cout << item << ": " << setw(WIDTH - item.length()) << "$" << price << endl;
+	        cout << "Tax: " << setw(WIDTH - 3) << "$"<< taxCost << endl;
+	        cout << "Discount: " << setw(WIDTH - 7) << "$-" << discount << endl;
+	        cout << "Total: " << setw(WIDTH - 5) << "$" << price + taxCost - discount << endl;
+	    }
+	                  
+	}
+    
+    return 0;
+}

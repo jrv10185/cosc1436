@@ -1,0 +1,73 @@
+CONSOLE OUTPUT/TESTING RESULTS: 
+
+Enter price per lb: $18.50
+
+Buying option       1 lb                10 lb               20 lb               
+
+Cost per day ($)    1.16                1.04                0.98  
+
+
+ 
+
+C++ SOURCE CODE: 
+
+//Description of Program: Price per pound Horse probiotic supplement
+//Author: James Vaughan
+//Section 1436.900
+//Date: 09/04/2022
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main() {
+    // Create and initialize the calulation constants
+    const double OZ_IN_POUNDS = 16;
+    
+    const double SECOND_OPTION_DISCOUNT = 0.1;
+    const double THIRD_OPTION_DISCOUNT = 0.15;
+    
+    const double SECOND_OPTION_POUNDS = 10;
+    const double THIRD_OPTION_POUNDS = 20;
+    
+    //Create and initialize the formatting constants
+    const int PRECISION = 2;
+    const int COLUMN_POSITION = 20;
+    
+    //Get cost per pound from console
+    cout << "Enter price per lb: $";
+    double pricePerPound;
+    cin >> pricePerPound;
+    
+    //Calculate price per day option 1 ( no discount)
+    double dailyCost = pricePerPound / OZ_IN_POUNDS;
+    
+    //Calculate price per day option 2 ( 10% discount)
+    double option2 = pricePerPound*SECOND_OPTION_POUNDS;
+    option2 -= SECOND_OPTION_DISCOUNT*option2;
+    option2 /= SECOND_OPTION_POUNDS*OZ_IN_POUNDS;
+    
+    //Calculate price per day option 3 ( 15% discount)
+    double option3 = pricePerPound*THIRD_OPTION_POUNDS;
+    option3 -= THIRD_OPTION_DISCOUNT*option3;
+    option3 /= THIRD_OPTION_POUNDS*OZ_IN_POUNDS;
+    
+    //Configure the Output
+    cout << setprecision(PRECISION) << fixed << left;
+    
+    //Output Buying options 
+    cout << endl << setw(COLUMN_POSITION)<< "Buying option";
+    cout << setw(COLUMN_POSITION) << "1 lb";
+    cout << setw(COLUMN_POSITION) << "10 lb";
+    cout << setw(COLUMN_POSITION) << "20 lb" << endl;
+    
+    //Output the cost per day for each option
+    cout << endl << setw(COLUMN_POSITION) << "Cost per day ($)";
+    cout << setw(COLUMN_POSITION) << dailyCost;
+    cout << setw(COLUMN_POSITION) << option2;
+    cout << setw(COLUMN_POSITION) << option3 << endl;
+    
+    return 0;
+}
+

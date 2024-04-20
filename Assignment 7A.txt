@@ -1,0 +1,104 @@
+CONSOLE OUTPUT/TESTING RESULTS:
+
+
+FIRST RUN
+Error: the scorecard could not be opened
+
+SECOND RUN
+Insufficient scores
+Mirabella Jones is disqualified
+
+THIRD RUN
+Insufficient scores
+Mirabella Jones is disqualified
+
+Fourth Run
+Mirabella Jones's results:
+7.5, 8.8, 7, 8.1, 8, 9.8, 9.3, 8.9, 9.1, 9, 
+The highest score of 9.8 and the lowest score of 7 were dropped
+The average score is 8.59
+
+
+
+
+C++ SOURCE CODE: 
+
+//Description of Program: Scorecards
+//Author: James Vaughan
+//Section 1436.900
+//Date: 11/06/2022
+
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    //Declare Constants
+    const string SCORES = "scores.txt";
+    const int NUM_SCORES = 10;
+    const int MIN_SCORE = 0;
+    const int MAX_SCORE = 10;
+    const int PRECISION = 2;
+    
+    //array to hold the scores from the judges
+    double scoreArray[1][10];
+    string competitor;
+    
+    //open file with the scores
+    ifstream fin;
+    fin.open(SCORES);
+    
+    // check if opened correctly
+    if (!fin){
+        cout << "Error: the scorecard could not be opened" << endl;
+        exit(0);
+    } else {
+        //get competitor name
+        getline(fin, competitor);
+        
+        // read scores into array
+        for (int i = 0; i < NUM_SCORES; i++){
+           if (!(fin >> scoreArray[0][i])){
+               cout << "Insufficient scores" << endl << competitor << " is disqualified"<< endl;
+               exit(0);
+           }
+        }
+        fin.close();
+    }
+    
+    //declare variables needed for output
+    double lowestScore = scoreArray[0][0];
+    double highestScore = scoreArray[0][0];
+    double total = 0;
+    
+    //loop through array, check for invalid score, set highest and lowest value, calc total
+    for (int i = 0; i < NUM_SCORES; i++){
+        if (scoreArray[0][i] < MIN_SCORE || scoreArray[0][i] > MAX_SCORE){
+            cout << "Invalid scores" << endl << competitor << " is disqualified" << endl;
+            exit (0);
+        }
+        if (scoreArray[0][i] > highestScore){
+            highestScore = scoreArray[0][i];
+        }
+        if (scoreArray[0][i] < lowestScore){
+            lowestScore = scoreArray[0][i];
+        }
+        total += scoreArray [0][i];
+    }
+    
+    // calc average
+    double averageScore = (total - (lowestScore + highestScore))/ (NUM_SCORES-2);
+    
+    //format and print output
+    cout << competitor << "'s results:" << endl;
+    for (int i = 0; i < NUM_SCORES; i++){
+        cout << scoreArray[0][i] << ", ";
+    }
+    cout << endl << "The highest score of " << highestScore << " and the lowest score of " << lowestScore << " were dropped" << endl;
+    cout << setprecision(PRECISION) << fixed;
+    cout << "The average score is " << averageScore << endl;
+    return 0;
+}
